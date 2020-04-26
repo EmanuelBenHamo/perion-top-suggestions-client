@@ -2,11 +2,15 @@
     width: 100%;
 }
 
+.input-container {
+    width: 100%;
+}
+
 .search-box-input {
     background-color: $search-box-bg-color;
     color: $search-box-text-color;
-    width: 50%;
     font-size: $search-box-text-size;
+    width: 50%;
     padding: 1rem 2rem;
     border-radius: 100vh 0 0 100vh;
 }
@@ -22,5 +26,8 @@
     }
 }
 
-.search-suggestions {
+.search-suggestions-list {
+    width: 35%;
+    background-color: white;
+    color: black;
 }

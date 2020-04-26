@@ -1,0 +1,8 @@
+.search-suggestion-container {
+    padding: 0.2rem 0;
+    text-align: start;
+    &:hover {
+        cursor: pointer;
+        background-color: lightgray;
+    }
+}
