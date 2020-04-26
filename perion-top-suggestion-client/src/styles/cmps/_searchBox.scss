@@ -1,0 +1,26 @@
+.form {
+    width: 100%;
+}
+
+.search-box-input {
+    background-color: $search-box-bg-color;
+    color: $search-box-text-color;
+    width: 50%;
+    font-size: $search-box-text-size;
+    padding: 1rem 2rem;
+    border-radius: 100vh 0 0 100vh;
+}
+
+.search-btn {
+    background-color: $search-btn-bg-color;
+    color: $search-btn-text-color;
+    font-size: $search-box-text-size;
+    border-radius: 0 100vh 100vh 0;
+    padding: 1rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.search-suggestions {
+}
