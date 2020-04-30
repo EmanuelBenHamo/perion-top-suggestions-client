@@ -9,8 +9,8 @@
       :trigger-on-focus="false"
       @select="onSuggestionSelected"
       size="medium"
-      autofocus="true"
-      clearable="true"
+      :autofocus="true"
+      :clearable="true"
     />
   </section>
 </template>
