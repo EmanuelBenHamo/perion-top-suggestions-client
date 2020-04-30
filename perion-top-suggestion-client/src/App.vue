@@ -1,6 +1,8 @@
 <template>
-  <section class="main-container flex column">
-    <search-box class="search-box" />
+  <section class="main-app flex column align-center">
+    <main class="main-container flex column align-center grow-1">
+      <search-box class="search-box" />
+    </main>
     <footer class="footer flex align-center justify-center">
       <h3 class="footer-text">Submitted by Emanuel Ben Hamo</h3>
     </footer>

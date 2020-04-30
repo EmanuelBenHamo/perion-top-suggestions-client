@@ -1,30 +1,22 @@
 <template>
-  <form
-    class="form flex column align-center grow-1 justify-start"
-    @submit.prevent="handleSearchSubmit"
-  >
-    <section class="input-container flex align-center justify-center">
-      <input
-        class="search-box-input"
-        placeholder="What are you looking for?"
-        v-model.trim="searchTerm"
-        @input="getSearchSuggestions"
-      />
-      <button class="search-btn">Search</button>
-    </section>
-
-    <search-suggestions-list
-      class="search-suggestions-list flex column"
-      v-if="searchSuggestions.length"
-      :suggestions="searchSuggestions"
-      @suggestionSelected="onSuggestionSelected"
+  <section class="search-box-container flex column">
+    <button class="search-btn flex" @click="handleSearchSubmit">Search</button>
+    <el-autocomplete
+      class="search-box-autocomplete"
+      v-model="searchTerm"
+      :fetch-suggestions="getSearchSuggestions"
+      placeholder="What are you looking for?"
+      :trigger-on-focus="false"
+      @select="onSuggestionSelected"
+      size="medium"
+      autofocus="true"
+      clearable="true"
     />
-  </form>
+  </section>
 </template>
 
 <script>
 import searchService from "../services/search.service";
-import searchSuggestionsList from "../components/searchSuggestionsList.cmp";
 export default {
   name: "search-box",
   data() {
@@ -34,23 +26,26 @@ export default {
     };
   },
   methods: {
-    async getSearchSuggestions() {
-      const searchSuggestions = await searchService.getSearchSuggestions(
-        this.searchTerm
+    async getSearchSuggestions(searchTermStr, cb) {
+      this.searchSuggestions = await searchService.getSearchSuggestions(
+        searchTermStr
       );
-      this.searchSuggestions = searchSuggestions;
+      const newSuggestions = this.searchSuggestions.map(suggestion => {
+        return {
+          value: suggestion,
+          link: searchService.getSearchUrl(suggestion)
+        };
+      });
+      cb(newSuggestions);
     },
     handleSearchSubmit() {
       const searchUrl = searchService.getSearchUrl(this.searchTerm);
       window.open(searchUrl, "_self");
     },
     onSuggestionSelected(suggestion) {
-      this.searchTerm = suggestion;
+      this.searchTerm = suggestion.value;
       this.handleSearchSubmit();
     }
-  },
-  components: {
-    searchSuggestionsList
   }
 };
 </script>

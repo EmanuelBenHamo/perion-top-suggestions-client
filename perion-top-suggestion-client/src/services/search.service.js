@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const SUGGESTIONS_API_URL = process.env.NODE_ENV === 'production' ?
     'https://search-suggest.herokuapp.com/api/search/'
-    : '//localhost:3030/api/search/';
+    : 'https://search-suggest.herokuapp.com/api/search/'
+// : '//localhost:3030/api/search/';
 
 const SEARCH_API_URL = 'https://www.google.com/search?q=';
 
