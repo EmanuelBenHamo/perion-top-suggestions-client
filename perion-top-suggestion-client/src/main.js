@@ -5,6 +5,7 @@ import App from "./App.vue";
 
 import './styles/global.scss';
 
+
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
